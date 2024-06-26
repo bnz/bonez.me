@@ -68,7 +68,7 @@ body {
     }
 
     p {
-        @apply mb-3 indent-3;
+        @apply mb-3 indent-3 md:text-lg;
     }
 
     img {
