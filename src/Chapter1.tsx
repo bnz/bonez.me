@@ -5,9 +5,14 @@ function isObject(obj: any) {
     return typeof obj === 'object' && !Array.isArray(obj) && obj !== null
 }
 
+export function getChapter() {
+    const searchParams = new URLSearchParams(window.location.search)
+    return searchParams.get("chapter")
+}
+
 export function Chapter1() {
     const [data, setData] = useState({})
-    const file = window.location.pathname
+    const file = getChapter()
 
     useEffect(function () {
         (async function () {
@@ -40,7 +45,7 @@ export function Chapter1() {
                                 return (
                                     <img
                                         className={cx("md:max-w-[250px] lg:max-w-[350px] 2xl:max-w-[500px]", className)}
-                                        src={`static/img${file}-${src}`}
+                                        src={`static/img/${file}-${src}`}
                                         alt={value as string}
                                         key={index + j + i}
                                     />

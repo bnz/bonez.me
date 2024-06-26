@@ -6,7 +6,7 @@ function capitalizeFirstLetter(string) {
 
 const pathToStatic = "./public/static"
 
-fs.readdir(`${pathToStatic}/chapters`, async function (err, files) {
+fs.readdir(`${pathToStatic}/img`, async function (err, files) {
     if (err) {
         throw new Error(err.message)
     }
@@ -14,25 +14,27 @@ fs.readdir(`${pathToStatic}/chapters`, async function (err, files) {
     const h2s = []
 
     for await (const file of files) {
-        const fileParts = file.split(".")
-        const extension = fileParts[fileParts.length - 1]
+        fs.rename(`${pathToStatic}/img/${file}`, `0${file.split("chapter")[1]}`, function (err) {
+            if (err) {
+                console.log('ERROR: ' + err);
+            }
+        })
 
-        if (extension === "json") {
-            const data = fs.readFileSync(`${pathToStatic}/chapters/${file}`, {encoding: "utf8"})
-            const parsed = JSON.parse(data)
 
-            h2s.push({
-                pathname: file.split(".")[0],
-                title: capitalizeFirstLetter(parsed["h2"].toLowerCase())
-            })
-        }
+        // const data = fs.readFileSync(`${pathToStatic}/chapters/${file}`, {encoding: "utf8"})
+        // const parsed = JSON.parse(data)
+
+        // h2s.push({
+        //     pathname: file.split(".")[0],
+        //     title: capitalizeFirstLetter(parsed["h2"].toLowerCase())
+        // })
     }
 
-    console.log({h2s});
+    // console.log({h2s});
 
-    fs.writeFile(`${pathToStatic}/h2s.json`, JSON.stringify(h2s, null, 2), function (err) {
-        if (err) {
-            throw new Error(err.message)
-        }
-    })
+    // fs.writeFile(`${pathToStatic}/h2s.json`, JSON.stringify(h2s, null, 2), function (err) {
+    //     if (err) {
+    //         throw new Error(err.message)
+    //     }
+    // })
 })

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { cx } from "./cx"
+import { getChapter } from "./Chapter1"
 
 export function H2s() {
     const [data, setData] = useState([])
@@ -11,16 +12,16 @@ export function H2s() {
         })()
     }, [setData])
 
-    const current = window.location.pathname
+    const current = getChapter()
 
     return (
         <ul>
             {data.map(function ({ title, pathname }, i) {
                 return (
                     <li key={i}>
-                        <a href={`/${pathname}`} className={cx(
+                        <a href={`/?chapter=${pathname}`} className={cx(
                             "block px-3 py-1 hover:underline",
-                            current === `/${pathname}` && "underline font-bold"
+                            current === pathname && "underline font-bold"
                         )}>
                             {title}
                         </a>

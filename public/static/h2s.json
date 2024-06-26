@@ -1,114 +1,114 @@
 [
   {
-    "pathname": "chapter01",
+    "pathname": "001",
     "title": "Глава первая"
   },
   {
-    "pathname": "chapter02",
+    "pathname": "002",
     "title": "Глава вторая"
   },
   {
-    "pathname": "chapter03",
+    "pathname": "003",
     "title": "Глава третья"
   },
   {
-    "pathname": "chapter04",
+    "pathname": "004",
     "title": "Глава четвёртая"
   },
   {
-    "pathname": "chapter05",
+    "pathname": "005",
     "title": "Глава пятая"
   },
   {
-    "pathname": "chapter06",
+    "pathname": "006",
     "title": "Глава шестая"
   },
   {
-    "pathname": "chapter07",
+    "pathname": "007",
     "title": "Глава седьмая"
   },
   {
-    "pathname": "chapter08",
+    "pathname": "008",
     "title": "Глава восьмая"
   },
   {
-    "pathname": "chapter09",
+    "pathname": "009",
     "title": "Глава девятая"
   },
   {
-    "pathname": "chapter10",
+    "pathname": "010",
     "title": "Глава десятая"
   },
   {
-    "pathname": "chapter11",
+    "pathname": "011",
     "title": "Глава одиннадцатая"
   },
   {
-    "pathname": "chapter12",
+    "pathname": "012",
     "title": "Глава двенадцатая"
   },
   {
-    "pathname": "chapter13",
+    "pathname": "013",
     "title": "Глава тринадцатая"
   },
   {
-    "pathname": "chapter14",
+    "pathname": "014",
     "title": "Глава четырнадцатая"
   },
   {
-    "pathname": "chapter15",
+    "pathname": "015",
     "title": "Глава пятнадцатая"
   },
   {
-    "pathname": "chapter16",
+    "pathname": "016",
     "title": "Глава шестнадцатая"
   },
   {
-    "pathname": "chapter17",
+    "pathname": "017",
     "title": "Глава семнадцатая"
   },
   {
-    "pathname": "chapter18",
+    "pathname": "018",
     "title": "Глава восемнадцатая"
   },
   {
-    "pathname": "chapter19",
+    "pathname": "019",
     "title": "Глава девятнадцатая"
   },
   {
-    "pathname": "chapter20",
+    "pathname": "020",
     "title": "Глава двадцатая"
   },
   {
-    "pathname": "chapter21",
+    "pathname": "021",
     "title": "Глава двадцать первая"
   },
   {
-    "pathname": "chapter22",
+    "pathname": "022",
     "title": "Глава двадцать вторая"
   },
   {
-    "pathname": "chapter23",
+    "pathname": "023",
     "title": "Глава двадцать третья"
   },
   {
-    "pathname": "chapter24",
+    "pathname": "024",
     "title": "Глава двадцать четвёртая"
   },
   {
-    "pathname": "chapter25",
+    "pathname": "025",
     "title": "Глава двадцать пятая"
   },
   {
-    "pathname": "chapter26",
+    "pathname": "026",
     "title": "Глава двадцать шестая"
   },
   {
-    "pathname": "chapter27",
+    "pathname": "027",
     "title": "Глава двадцать седьмая"
   },
   {
-    "pathname": "chapter28",
+    "pathname": "028",
     "title": "Глава двадцать восьмая"
   }
 ]
