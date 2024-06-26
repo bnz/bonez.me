@@ -1,0 +1,114 @@
+[
+  {
+    "pathname": "chapter01",
+    "title": "Глава первая"
+  },
+  {
+    "pathname": "chapter02",
+    "title": "Глава вторая"
+  },
+  {
+    "pathname": "chapter03",
+    "title": "Глава третья"
+  },
+  {
+    "pathname": "chapter04",
+    "title": "Глава четвёртая"
+  },
+  {
+    "pathname": "chapter05",
+    "title": "Глава пятая"
+  },
+  {
+    "pathname": "chapter06",
+    "title": "Глава шестая"
+  },
+  {
+    "pathname": "chapter07",
+    "title": "Глава седьмая"
+  },
+  {
+    "pathname": "chapter08",
+    "title": "Глава восьмая"
+  },
+  {
+    "pathname": "chapter09",
+    "title": "Глава девятая"
+  },
+  {
+    "pathname": "chapter10",
+    "title": "Глава десятая"
+  },
+  {
+    "pathname": "chapter11",
+    "title": "Глава одиннадцатая"
+  },
+  {
+    "pathname": "chapter12",
+    "title": "Глава двенадцатая"
+  },
+  {
+    "pathname": "chapter13",
+    "title": "Глава тринадцатая"
+  },
+  {
+    "pathname": "chapter14",
+    "title": "Глава четырнадцатая"
+  },
+  {
+    "pathname": "chapter15",
+    "title": "Глава пятнадцатая"
+  },
+  {
+    "pathname": "chapter16",
+    "title": "Глава шестнадцатая"
+  },
+  {
+    "pathname": "chapter17",
+    "title": "Глава семнадцатая"
+  },
+  {
+    "pathname": "chapter18",
+    "title": "Глава восемнадцатая"
+  },
+  {
+    "pathname": "chapter19",
+    "title": "Глава девятнадцатая"
+  },
+  {
+    "pathname": "chapter20",
+    "title": "Глава двадцатая"
+  },
+  {
+    "pathname": "chapter21",
+    "title": "Глава двадцать первая"
+  },
+  {
+    "pathname": "chapter22",
+    "title": "Глава двадцать вторая"
+  },
+  {
+    "pathname": "chapter23",
+    "title": "Глава двадцать третья"
+  },
+  {
+    "pathname": "chapter24",
+    "title": "Глава двадцать четвёртая"
+  },
+  {
+    "pathname": "chapter25",
+    "title": "Глава двадцать пятая"
+  },
+  {
+    "pathname": "chapter26",
+    "title": "Глава двадцать шестая"
+  },
+  {
+    "pathname": "chapter27",
+    "title": "Глава двадцать седьмая"
+  },
+  {
+    "pathname": "chapter28",
+    "title": "Глава двадцать восьмая"
+  }
+]
