@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { cx } from "./cx"
+import { ChaptersList } from "./ChaptersList"
 
 function isObject(obj: any) {
     return typeof obj === 'object' && !Array.isArray(obj) && obj !== null
@@ -11,21 +12,37 @@ export function getChapter() {
 }
 
 export function Chapter1() {
-    const [data, setData] = useState({})
+    const [loading, setLoading] = useState(false)
+    const [data, setData] = useState<[string, any][]>([])
     const file = getChapter()
 
     useEffect(function () {
         (async function () {
-            if (file !== "/") {
+            if (file && file !== "/") {
+                setLoading(true)
                 const a = await (await fetch(`static/chapters/${file}.json`)).json()
-                setData(a)
+                setLoading(false)
+                setData(Object.entries(a))
             }
         })()
-    }, [setData, file])
+    }, [setData, file, setLoading])
+
+    if (loading) {
+        return <>...</>
+    }
 
     return (
         <>
-            {Object.entries(data).map(function ([Tag, content], index) {
+            {data.length === 0 && !loading && (
+                <div>
+                    <img
+                        src={`static/img/000-001.jpg`}
+                        alt=""
+                    />
+                    <ChaptersList showSubtitle />
+                </div>
+            )}
+            {data.map(function ([Tag, content], index) {
                 return Array.isArray(content) ? content.map(function (contentString, j) {
 
                     if (isObject(contentString)) {

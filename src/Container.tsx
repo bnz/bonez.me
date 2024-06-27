@@ -30,7 +30,7 @@ export function Container({ children }: PropsWithChildren<{}>) {
         <section className="relative p-3 pt-10" ref={ref}>
             <div style={{ width }} className={cx(
                 "rounded",
-                "sticky top-20 -left-3 md:left-0 h-0.5 md:h-1 z-10",
+                "sticky top-10 lg:top-20 left-0 h-0.5 lg:h-1 z-10",
                 "bg-[--main-text-color]",
                 "transition-[width] duration-200 ease-out",
             )} />

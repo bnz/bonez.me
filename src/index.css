@@ -52,15 +52,23 @@ body {
 
 @layer components {
 
+    h1 {
+        @apply text-2xl font-bold text-center;
+    }
+
+    article {
+        @apply italic text-center lg:text-right mb-6;
+    }
+
     h2 {
-        @apply text-3xl mb-6;
+        @apply text-3xl mb-6 text-center lg:text-left;
     }
 
     h3 {
         @apply text-2xl font-bold mb-6;
-        @apply md:sticky md:top-20 md:bg-[--main-background-color] md:shadow-md md:p-2 md:block;
-        @apply before:md:block before:md:w-3 before:md:h-full before:md:bg-[--main-background-color] before:md:absolute before:md:-left-1 before:md:top-0;
-        @apply after:md:block after:md:w-3 after:md:h-full after:md:bg-[--main-background-color] after:md:absolute after:md:-right-1 after:md:top-0;
+        @apply lg:sticky lg:top-20 lg:bg-[--main-background-color] lg:shadow-md lg:p-2 lg:block;
+        @apply before:lg:block before:lg:w-3 before:lg:h-full before:lg:bg-[--main-background-color] before:lg:absolute before:lg:-left-1 before:lg:top-0;
+        @apply after:lg:block after:lg:w-3 after:lg:h-full after:lg:bg-[--main-background-color] after:lg:absolute after:lg:-right-1 after:lg:top-0;
     }
 
     blockquote {
@@ -68,7 +76,7 @@ body {
     }
 
     p {
-        @apply mb-3 indent-3 md:text-lg;
+        @apply mb-3 indent-3 lg:text-lg;
     }
 
     img {
