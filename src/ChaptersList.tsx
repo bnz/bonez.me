@@ -1,28 +1,41 @@
 import { Fragment, useEffect, useState } from "react"
 import { getChapter } from "./Chapter1"
 import { cx } from "./cx"
+import { useH2s } from "./H2sProvider"
 
 type ChaptersListProps = {
     showSubtitle?: boolean
 }
 
+type DataType = {
+    title: string
+    pathname: string
+    subTitle: string
+}[]
+
 export function ChaptersList({ showSubtitle }: ChaptersListProps) {
-    const [data, setData] = useState<{
-        title: string
-        pathname: string
-        subTitle: string
-    }[]>([])
+    const current = getChapter()
+    const { dispatch } = useH2s()
+    const [data, setData] = useState<DataType>([])
+    const TitleWrap = showSubtitle ? "b" : Fragment
 
     useEffect(function () {
         (async function () {
-            const a = await (await fetch("static/h2s.json")).json()
+            const a: DataType = await (await fetch("static/h2s.json")).json()
             setData(a)
+            const index = a.findIndex(function ({ pathname }) {
+                return pathname === current
+            })
+            if (a[index - 1]) {
+                const { pathname, title } = a[index - 1]
+                dispatch({ type: "set-prev", payload: { pathname, title } })
+            }
+            if (a[index + 1]) {
+                const { pathname, title } = a[index + 1]
+                dispatch({ type: "set-next", payload: { pathname, title } })
+            }
         })()
-    }, [setData])
-
-    const current = getChapter()
-
-    const TitleWrap = showSubtitle ? "b" : Fragment
+    }, [setData, dispatch, current])
 
     return (
         <ul>
@@ -31,7 +44,7 @@ export function ChaptersList({ showSubtitle }: ChaptersListProps) {
                     <li key={i}>
                         <a href={`/?chapter=${item.pathname}`} className={cx(
                             "block px-3 py-1 hover:underline",
-                            current === item.pathname && "underline font-bold"
+                            current === item.pathname && "underline font-bold",
                         )}>
                             <TitleWrap>{item.title}</TitleWrap>
                             {showSubtitle ? (

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { cx } from "./cx"
 import { ChaptersList } from "./ChaptersList"
+import { NextChapterLink } from "./NextChapterLink"
 
 function isObject(obj: any) {
     return typeof obj === 'object' && !Array.isArray(obj) && obj !== null
@@ -113,6 +114,9 @@ export function Chapter1() {
                     <Tag key={index}>{content}</Tag>
                 )
             })}
+            {data.length > 0 && !loading && (
+                <NextChapterLink />
+            )}
         </>
     )
 }
