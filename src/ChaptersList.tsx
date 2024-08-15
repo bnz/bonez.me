@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react"
-import { getChapter } from "./Chapter1"
+import { getChapter, getParam } from "./Chapter1"
 import { cx } from "./cx"
 import { useH2s } from "./H2sProvider"
 
@@ -14,17 +14,18 @@ type DataType = {
 }[]
 
 export function ChaptersList({ showSubtitle }: ChaptersListProps) {
-    const current = getChapter()
+    const book = getParam("book")
+    const chapter = getChapter()
     const { dispatch } = useH2s()
     const [data, setData] = useState<DataType>([])
     const TitleWrap = showSubtitle ? "b" : Fragment
 
     useEffect(function () {
         (async function () {
-            const a: DataType = await (await fetch("static/h2s.json")).json()
+            const a: DataType = await (await fetch(`static/h2s-${book}.json`)).json()
             setData(a)
             const index = a.findIndex(function ({ pathname }) {
-                return pathname === current
+                return pathname === chapter
             })
             if (a[index - 1]) {
                 const { pathname, title } = a[index - 1]
@@ -35,16 +36,16 @@ export function ChaptersList({ showSubtitle }: ChaptersListProps) {
                 dispatch({ type: "set-next", payload: { pathname, title } })
             }
         })()
-    }, [setData, dispatch, current])
+    }, [setData, dispatch, book, chapter])
 
     return (
         <ul>
             {data.map(function (item, i) {
                 return (
                     <li key={i}>
-                        <a href={`/?chapter=${item.pathname}`} className={cx(
+                        <a href={`/?book=${book}&chapter=${item.pathname}`} className={cx(
                             "block px-3 py-1 hover:underline",
-                            current === item.pathname && "underline font-bold",
+                            chapter === item.pathname && "underline font-bold",
                         )}>
                             <TitleWrap>{item.title}</TitleWrap>
                             {showSubtitle ? (

@@ -27,7 +27,7 @@ export function Container({ children }: PropsWithChildren<{}>) {
     }, [setWidth])
 
     return (
-        <section className="relative p-3 pt-10" ref={ref}>
+        <section className="relative p-3 pt-10 w-full" ref={ref}>
             <div style={{ width }} className={cx(
                 "rounded",
                 "sticky top-10 lg:top-20 left-0 h-0.5 lg:h-1 z-10",

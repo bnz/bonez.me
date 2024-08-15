@@ -6,7 +6,21 @@ function capitalizeFirstLetter(string) {
 
 const pathToStatic = "./public/static"
 
-fs.readdir(`${pathToStatic}/chapters`, async function (err, files) {
+const args = process.argv
+
+if (args[2] !== "--book") {
+    throw new Error("no book passed")
+}
+
+const availableBooks = ["crusoe", "onegin"]
+
+const book = args[3]
+
+if (!availableBooks.includes(book)) {
+    throw new Error(`No book with name '${book}' found. Available books: '${availableBooks.join("', '")}'.`)
+}
+
+fs.readdir(`${pathToStatic}/${book}`, async function (err, files) {
     if (err) {
         throw new Error(err.message)
     }
@@ -14,14 +28,7 @@ fs.readdir(`${pathToStatic}/chapters`, async function (err, files) {
     const h2s = []
 
     for await (const file of files) {
-        // fs.rename(`${pathToStatic}/img/${file}`, `0${file.split("chapter")[1]}`, function (err) {
-        //     if (err) {
-        //         console.log('ERROR: ' + err);
-        //     }
-        // })
-
-
-        const data = fs.readFileSync(`${pathToStatic}/chapters/${file}`, {encoding: "utf8"})
+        const data = fs.readFileSync(`${pathToStatic}/${book}/${file}`, {encoding: "utf8"})
         const parsed = JSON.parse(data)
 
         h2s.push({
@@ -31,9 +38,9 @@ fs.readdir(`${pathToStatic}/chapters`, async function (err, files) {
         })
     }
 
-    console.log({h2s});
+    // console.log({h2s});
 
-    fs.writeFile(`${pathToStatic}/h2s.json`, JSON.stringify(h2s, null, 2), function (err) {
+    fs.writeFile(`${pathToStatic}/h2s-${book}.json`, JSON.stringify(h2s, null, 2), function (err) {
         if (err) {
             throw new Error(err.message)
         }

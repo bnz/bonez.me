@@ -8,6 +8,15 @@ module.exports = {
             },
         },
     },
+    safelist: [
+        "footer-separator",
+        "text-right",
+        "w-2/3",
+        "ml-auto",
+        "text-sm",
+        "italic",
+        "mb-10",
+    ],
     plugins: [],
 }
 

@@ -7,12 +7,17 @@ function isObject(obj: any) {
     return typeof obj === 'object' && !Array.isArray(obj) && obj !== null
 }
 
-export function getChapter() {
+export function getParam(name: "book" | "chapter") {
     const searchParams = new URLSearchParams(window.location.search)
-    return searchParams.get("chapter")
+    return searchParams.get(name)
+}
+
+export function getChapter() {
+    return getParam("chapter")
 }
 
 export function Chapter1() {
+    const book = getParam("book")
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState<[string, any][]>([])
     const file = getChapter()
@@ -21,12 +26,12 @@ export function Chapter1() {
         (async function () {
             if (file && file !== "/") {
                 setLoading(true)
-                const a = await (await fetch(`static/chapters/${file}.json`)).json()
+                const a = await (await fetch(`static/${book}/${file}.json`)).json()
                 setLoading(false)
                 setData(Object.entries(a))
             }
         })()
-    }, [setData, file, setLoading])
+    }, [book, setData, file, setLoading])
 
     if (loading) {
         return <>...</>
@@ -37,7 +42,8 @@ export function Chapter1() {
             {data.length === 0 && !loading && (
                 <div>
                     <img
-                        src={`static/img/000-001.jpg`}
+                        className="md:max-w-[50%]"
+                        src={`static/img/${book}/000-001.jpg`}
                         alt=""
                     />
                     <ChaptersList showSubtitle />
@@ -63,7 +69,7 @@ export function Chapter1() {
                                 return (
                                     <img
                                         className={cx("md:max-w-[250px] lg:max-w-[350px] 2xl:max-w-[500px]", className)}
-                                        src={`static/img/${file}-${src}`}
+                                        src={`static/img/${book}/${file}-${src}`}
                                         alt={value as string}
                                         key={index + j + i}
                                     />
@@ -98,16 +104,23 @@ export function Chapter1() {
                                 )
                             }
 
+                            if (isObject(value) && value.class && value.text) {
+                                return (
+                                    // @ts-ignore
+                                    <Tag key={index + j + i} className={value.class || ""} dangerouslySetInnerHTML={{ __html: value.text }} />
+                                )
+                            }
+
                             return (
                                 // @ts-ignore
-                                <Tag key={index + j + i}>{value}</Tag>
+                                <Tag key={index + j + i} dangerouslySetInnerHTML={{ __html: value }} />
                             )
                         })
                     }
 
                     return (
                         // @ts-ignore
-                        <Tag key={index + j}>{contentString}</Tag>
+                        <Tag key={index + j} dangerouslySetInnerHTML={{ __html: contentString }} />
                     )
                 }) : (
                     // @ts-ignore
